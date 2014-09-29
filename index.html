@@ -1,44 +1,45 @@
 <!DOCTYPE html>
 <html ng-app>
-<head>
-<script src="script.js"></script>
-<script src="angular.js"></script>
-<link type="text/css" href="style.css" rel="stylesheet">
-<meta charset=utf-8 />
-<title>FOOZ SCORE</title>
+  <head>
+  <script src="app/script.js"></script>
+  <script src="app/angular.js"></script>
+  <link type="text/css" href="stylesheet/bootstrap.css" rel="stylesheet">
+  <link type="text/css" href="stylesheet/style.css" rel="stylesheet">
+  <meta charset=utf-8 />
+  <title>FOOZ SCORE</title>
 </head>
-<body style="background-image:url('foozback.jpg')" ng-controller="ctrl" ng-keypress="recordInput($event)">
-	<div ng-show="newgame"></div>
-	<div ng-show="VS"></div>
- 	<div ng-show="championship" class="title">BOSS TOAD TOURNAMENT</div>
- 	<div ng-hide="championship" class="title">Foosball!</div>
- 	<div class="center">
-	 	<img class="playerimg playerimg1" src="player1.png">
-	    <img class="scoreboard" src="foozscore.png"> 	 
-	    <img class="playeravatar avatar1" src="players/{{avatar1}}.jpg">
-	    <img class="playeravatar avatar2" src="players/{{avatar2}}.jpg">
-		<img class="playerimg playerimg2" src="player2.png">	
-		<span class="scoreboardtext minute">{{minute}}</span>
-		<span class="scoreboardtext second">{{second}}</span>
-		<span class="scoreboardtext player1score">{{player1}}</span>
-		<span class="scoreboardtext player2score">{{player2}}</span>
-		<span class="scoreboardtext goal" ng-show="goal">GOAL!</span>
-		<span class="scoreboardtext playermessage message1" ng-show="message1">{{message1}}</span>
-		<span class="scoreboardtext playermessage message2" ng-show="message2">{{message2}}</span>
-		<span ng-show="finishthem" class="finishthem">FINISH THEM!</span>
-		<img ng-if="player1Rounds >= 1" class="scoremarker sm11" src="scoremarker.png">
-		<img ng-if="player1Rounds >= 2" class="scoremarker sm12" src="scoremarker.png">
-		<img ng-if="player1Rounds >= 3" class="scoremarker sm13" src="scoremarker.png">
-		<img ng-if="player2Rounds >= 1" class="scoremarker sm21" src="scoremarker.png">
-		<img ng-if="player2Rounds >= 2" class="scoremarker sm22" src="scoremarker.png">
-		<img ng-if="player2Rounds >= 3" class="scoremarker sm23" src="scoremarker.png">	
-    </div>
-    <div ng-if="player1Rounds == 3 || player2Rounds == 3" class="center tournywin">
-    	<div style="width:90%" class="center">Tournament Win!</div>
-		<div class="tournyavatar"><img ng-if="player1Rounds == 3" class="championavatar" src="players/{{avatar1}}.jpg"></div>
-    	<div class="tournyavatar"><img ng-if="player2Rounds == 3" class="championavatar" src="players/{{avatar2}}.jpg"></div>
-    	<div class="center" style="width:72%" ng-if="player1Rounds == 3">Yellow Player</div>
-    	<div style="width:72%" class="center" ng-if="player2Rounds == 3">Black Player</div>
-    </div>
+<body ng-controller="ctrl" ng-keypress="recordInput($event)">
+  <div ng-show="newgame"></div>
+  <div ng-show="VS"></div>
+  <div ng-show="championship" class="title">BOSS TOAD TOURNAMENT</div>
+  <div ng-hide="championship" class="title">Foosball!</div>
+  <div class="center">
+    <img class="playerimg playerimg1" src="images/player1.png">
+    <img class="scoreboard" src="images/foozscore.png">    
+    <img class="playeravatar avatar1" src="players/{{avatar1}}.jpg">
+    <img class="playeravatar avatar2" src="players/{{avatar2}}.jpg">
+    <img class="playerimg playerimg2" src="images/player2.png"> 
+    <span class="scoreboardtext minute">{{minute}}</span>
+    <span class="scoreboardtext second">{{second}}</span>
+    <span class="scoreboardtext player1score">{{player1}}</span>
+    <span class="scoreboardtext player2score">{{player2}}</span>
+    <span class="scoreboardtext goal" ng-show="goal">GOAL!</span>
+    <span class="scoreboardtext playermessage message1" ng-show="message1">{{message1}}</span>
+    <span class="scoreboardtext playermessage message2" ng-show="message2">{{message2}}</span>
+    <span ng-show="finishthem" class="finishthem">FINISH THEM!</span>
+    <img ng-if="player1Rounds >= 1" class="scoremarker sm11" src="images/scoremarker.png">
+    <img ng-if="player1Rounds >= 2" class="scoremarker sm12" src="images/scoremarker.png">
+    <img ng-if="player1Rounds >= 3" class="scoremarker sm13" src="images/scoremarker.png">
+    <img ng-if="player2Rounds >= 1" class="scoremarker sm21" src="images/scoremarker.png">
+    <img ng-if="player2Rounds >= 2" class="scoremarker sm22" src="images/scoremarker.png">
+    <img ng-if="player2Rounds >= 3" class="scoremarker sm23" src="images/scoremarker.png">  
+  </div>
+  <div ng-if="player1Rounds == 3 || player2Rounds == 3" class="center tournywin">
+    <div style="width:90%" class="center">Tournament Win!</div>
+    <div class="tournyavatar"><img ng-if="player1Rounds == 3" class="championavatar" src="players/{{avatar1}}.jpg"></div>
+    <div class="tournyavatar"><img ng-if="player2Rounds == 3" class="championavatar" src="players/{{avatar2}}.jpg"></div>
+    <div class="center" style="width:72%" ng-if="player1Rounds == 3">Yellow Player</div>
+    <div style="width:72%" class="center" ng-if="player2Rounds == 3">Black Player</div>
+  </div>
 </body>
 </html>
