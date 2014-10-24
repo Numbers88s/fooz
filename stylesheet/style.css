@@ -1,179 +1,148 @@
-* {
-	border: 1px solid red;
-}
-
-html { 
-  background: url('../images/background-fooz.jpg') no-repeat center center fixed; 
+@charset "UTF-8";
+/* Background Image */
+/* line 6, ../sass/style.scss */
+body {
+  background: url("../images/background-fooz.jpg") no-repeat center center fixed !important;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 
-h1 {
-	color: white;
-}
-
 /* Fonts */
 @font-face {
   font-family: 'ArcadeClassic';
-  src: url('../font/arcadeclassic.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+  src: url("../font/arcadeclassic.ttf") format("truetype");
+  /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
-
+@font-face {
+  font-family: 'Lighthouse';
+  src: url("../font/Lighthouse_PersonalUse.ttf") format("truetype");
+  /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+@font-face {
+  font-family: 'coolvetica';
+  src: url("../font/coolvetica.ttf") format("truetype");
+  /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+/* line 30, ../sass/style.scss */
 body {
-  font-family: 'ArcadeClassic', sans-serif;
+  font-family: 'coolvetica', sans-serif;
   background-color: black;
   height: 100%;
 }
 
-/*.welcome {
-	display: inline;
-	margin: 0 auto;
-	position: relative;
-	top: 150px;
-}*/
+/* line 36, ../sass/style.scss */
+ul li {
+  display: inline;
+  list-style: none;
+}
 
-/*
-.playerimg {
-	position: absolute;
-	margin-top: 4%;
+/* line 42, ../sass/style.scss */
+.player-images ul {
+  list-style-type: none;
+  text-align: center;
+  padding-left: 0px;
 }
-.center {
-	width: 50%;
-	margin: 0 auto;
+/* line 46, ../sass/style.scss */
+.player-images ul li:nth-child(1) {
+  padding-right: 11%;
 }
-.playerimg1 {
-	margin-left: -15%;
+/* line 49, ../sass/style.scss */
+.player-images ul li:nth-child(2) {
+  padding-left: 11%;
 }
-.playerimg2 {
-	margin-left: 3%;
+
+/* line 55, ../sass/style.scss */
+.time-keeping div,
+.score-keeping div {
+  text-align: center;
+  font-size: 75px;
+  color: wheat;
 }
-.scoreboard {
-	margin-top: 5%;
+
+/* line 62, ../sass/style.scss */
+.score-keeping div {
+  font-size: 150px;
 }
+/* line 64, ../sass/style.scss */
+.score-keeping div ul {
+  list-style-type: none;
+  text-align: center;
+  padding-left: 0px;
+}
+/* line 68, ../sass/style.scss */
+.score-keeping div ul li:nth-child(1) {
+  padding-right: 11%;
+}
+/* line 71, ../sass/style.scss */
+.score-keeping div ul li:nth-child(2) {
+  padding-left: 11%;
+}
+
+/* line 78, ../sass/style.scss */
+.game-messages ul {
+  list-style-type: none;
+  text-align: center;
+  padding-left: 0px;
+}
+/* line 83, ../sass/style.scss */
+.game-messages li:nth-child(1) {
+  padding-right: 8%;
+}
+/* line 86, ../sass/style.scss */
+.game-messages li:nth-child(2) {
+  padding-left: 8%;
+}
+
+/* line 91, ../sass/style.scss */
 .title {
-	font-size: 83px;
-	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-	background-color: orange;
-	text-align: center;
+  height: 111px;
+  font-size: 75px;
+  text-align: center;
+  color: wheat;
 }
 
-.playeravatar {
-	position: absolute;
-}	
-.avatar1 {
-	margin-top: 4%;
-	margin-left: -44%;	
-}
-.avatar2 {
-	margin-top: 4%;
-	margin-left: -10%;
-}
-.scoreboardtext {
-	font-size: 95px;
-	/*color: white;*/
-	position: absolute;
-}
-.minute {
-	margin-top: 3%;
-	margin-left: -31%;
-}
-.second {
-	margin-top: 3%;
-	margin-left: -21%;
-}
-.player1score {
-	margin-top: 12%;
-	margin-left: -44%;
-	font-size: 225px;
-}
-.player2score {
-	margin-top: 12%;
-	margin-left: -11%;
-	font-size: 225px;
-}
+/* line 98, ../sass/style.scss */
 .goal {
-	margin-top: 16%;
-	margin-left: -34%;
-	color: orange;
+  font-size: 300px;
+  position: absolute;
+  width: 100%;
+  top: 40px;
+  color: chocolate;
+}
+/* line 104, ../sass/style.scss */
+.goal div {
+  text-align: center;
 }
 
-.playermessage {
-	margin-top: 24%;
-	font-size: 58px;
-	text-shadow: 2px 2px black;
-	color: orange;
-}
-.message1 {
-	margin-left: -70%;
-}
-.message2 {
-	margin-left: 1%;
-}
-
+/* line 109, ../sass/style.scss */
 .finishthem {
-	margin-top: 16%;
-	font-size: 101px;
-	text-shadow: 2px 2px black;
-	color: red;
-	position: absolute;
-	margin-left: -49%;
-	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-	background-color: orange;
+  font-size: 120px;
+  position: absolute;
+  width: 100%;
+  top: 360px;
+  color: chocolate;
+}
+/* line 115, ../sass/style.scss */
+.finishthem div {
+  text-align: center;
 }
 
-.player1scoreChamp {
-
+/* Animation of spin around */
+/* Message for Players (Skunked or Winner) */
+/* line 136, ../sass/style.scss */
+.message1,
+.message2 {
+  font-size: 60px;
+  color: #E06E2E;
 }
 
-.scoremarker {
-	position: absolute;
-	margin-top: 13%;
+/* line 142, ../sass/style.scss */
+#timer {
+  position: relative;
+  color: wheat;
+  text-align: center;
+  font-size: 60px;
+  margin-top: 25px;
 }
-
-.sm11 {
-	margin-left: -44%;
-}
-
-.sm12 {
-	margin-left: -41%;
-}
-
-.sm13 {
-	margin-left: -38%;
-}
-
-.sm21 {
-	margin-left: -10%;
-}
-
-.sm22 {
-	margin-left: -7%;
-}
-
-.sm23 {
-	margin-left: -4%;
-}
-
-.tournywin {
-	font-size: 101px;
-	text-shadow: 2px 2px black;
-	color: red;
-	position: absolute;
-	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-	background-color: orange;
-	margin-left: 15%;
-	margin-top: -30%;
-	width: 66%;
-}
-
-.tournyavatar {
-	margin: 0 auto;
-	width: 17%;
-}*/

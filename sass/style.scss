@@ -1,0 +1,153 @@
+// * {
+//   border: 1px solid red;
+// }
+
+/* Background Image */
+body { 
+  background: url('../images/background-fooz.jpg') no-repeat center center fixed !important; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* Fonts */
+@font-face {
+  font-family: 'ArcadeClassic';
+  src: url('../font/arcadeclassic.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+
+@font-face {
+  font-family: 'Lighthouse';
+  src: url('../font/Lighthouse_PersonalUse.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+
+@font-face {
+  font-family: 'coolvetica';
+  src: url('../font/coolvetica.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+
+body {
+  font-family: 'coolvetica', sans-serif;
+  background-color: black;
+  height: 100%;
+}
+
+ul li {
+  display: inline;
+  list-style: none;
+}
+
+.player-images {
+  ul {
+    list-style-type: none;
+    text-align: center;
+    padding-left: 0px;
+    li:nth-child(1) {
+      padding-right: 11%;
+    }
+    li:nth-child(2) {
+      padding-left: 11%;
+    }
+  }
+}
+
+.time-keeping div,
+.score-keeping div {
+  text-align: center;
+  font-size: 75px;
+  color: wheat;
+}
+
+.score-keeping div {
+  font-size: 150px;
+  ul {
+    list-style-type: none;
+    text-align: center;
+    padding-left: 0px;
+    li:nth-child(1) {
+      padding-right: 11%;
+    }
+    li:nth-child(2) {
+      padding-left: 11%;
+    }
+  }
+}
+
+.game-messages {
+  ul {
+    list-style-type: none;
+    text-align: center;
+    padding-left: 0px;
+  }
+  li:nth-child(1) {
+    padding-right: 8%;
+  }
+  li:nth-child(2) {
+    padding-left: 8%;
+  }
+}
+
+.title {
+  height: 111px;
+  font-size: 75px;
+  text-align: center;
+  color: wheat;
+}
+
+.goal {
+  font-size: 300px;
+  position: absolute;
+  width: 100%;
+  top: 40px;
+  color: chocolate;
+  div {
+    text-align: center;
+  }
+}
+
+.finishthem {
+  font-size: 120px;
+  position: absolute;
+  width: 100%;
+  top: 360px;
+  color: chocolate;
+  div {
+    text-align: center;
+  }
+}
+
+/* Animation of spin around */
+// .spin-around {
+//   text-align: center;
+//   -webkit-transform: rotate(335deg);
+//   -webkit-animation-name: spin;
+//   -webkit-animation-duration: 2000ms;
+//   -webkit-animation-iteration-count: infinite;
+//   -webkit-animation-timing-function: ease-in-out;
+// }
+
+// @-webkit-keyframes spin {
+//   from { -webkit-transform: rotate(0deg);}
+//   to { -webkit-transform: rotate(360deg);}
+// }
+
+/* Message for Players (Skunked or Winner) */
+.message1,
+.message2 {
+  font-size: 60px;
+  color: #E06E2E;
+}
+
+#timer {
+  position: relative;
+  color: wheat;
+  text-align: center;
+  font-size: 60px;
+  margin-top: 25px;
+}
+
+
+
+
+
