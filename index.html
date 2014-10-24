@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="kickAssFoosball">
   <head>
   <script src="app/angular.js"></script>
-  <script src="app/angular-timer.js"></script>
+  <script src="app/timer.js"></script>
+  <script src="app/docs.js"></script>
   <script src="app/script.js"></script>
   <link type="text/css" href="stylesheet/bootstrap.css" rel="stylesheet">
   <link type="text/css" href="stylesheet/style.css" rel="stylesheet">
@@ -21,25 +22,14 @@
         <li class="scorers"><img class="playeravatar avatar2" src="players/{{avatar2}}.jpg"></li>
       </ul>
     </div>
-    
-<!--     <div class="time-keeping">
-      <div>
-        <span class="scoreboardtext minute">{{minute}}</span>
-        <span>:</span>
-        <span class="scoreboardtext second">{{second}}</span>
-      </div>
-    </div>
-    <div>  
-      <h3>
-        <timer class="timer" interval="1000">hours, minutes, seconds.</timer>
-      </h3>
-    </div> -->
 
-    <div id='timer'>
-      <script type="text/javascript">
-        window.onload = CreateTimer("timer", 01);
-      </script>
-    </div>  
+    <section>
+      <div>
+        <h3 class="timer">
+            <timer interval="1000">{{mminutes}} : {{sseconds}} </timer>
+        </h3>
+      </div>
+    </section>
 
     <div class="score-keeping">
       <div>
@@ -57,9 +47,9 @@
         <div>FINISH THEM!</div>
       </div>
       <div class="game-messages">  
-        <ul>
-          <li class="scoreboardtext playermessage message1" ng-show="message1">{{message1}}</li>
-          <li class="scoreboardtext playermessage message2" ng-show="message2">{{message2}}</li>
+        <ul class="col-lg-6 col-lg-offset-3">
+          <li class="scoreboardtext col-lg-6 playermessage message2" ng-show="message2">{{message2}}</li>
+          <li class="scoreboardtext col-lg-4 col-lg-offset-2 playermessage message1" ng-show="message1">{{message1}}</li>
         </ul>
       </div>  
     </div>

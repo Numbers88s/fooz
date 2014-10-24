@@ -80,12 +80,12 @@ ul li {
     text-align: center;
     padding-left: 0px;
   }
-  li:nth-child(1) {
-    padding-right: 8%;
-  }
-  li:nth-child(2) {
-    padding-left: 8%;
-  }
+  // li:nth-child(1) {
+  //   padding-right: 8%;
+  // }
+  // li:nth-child(2) {
+  //   padding-left: 8%;
+  // }
 }
 
 .title {
@@ -139,7 +139,11 @@ ul li {
   color: #E06E2E;
 }
 
-#timer {
+.message1 {
+  float: right;
+}
+
+.timer {
   position: relative;
   color: wheat;
   text-align: center;

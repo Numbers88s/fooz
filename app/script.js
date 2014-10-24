@@ -1,4 +1,7 @@
-function ctrl($scope, $timeout, $interval){
+var kickAssFoosball = angular.module('kickAssFoosball', ['timer']);
+
+kickAssFoosball.controller('ctrl', function($scope, $interval, $timeout) {
+
   $scope.player1 = 0;
   $scope.player2 = 0;
   $scope.player1Rounds = 0;
@@ -18,6 +21,9 @@ function ctrl($scope, $timeout, $interval){
   $scope.timerprom;
   $scope.Timer;
   $scope.TotalSeconds;
+
+
+
 
   // $scope.startTimer = function () {
   //   $scope.timerprom = $interval(function(){
@@ -74,20 +80,20 @@ function ctrl($scope, $timeout, $interval){
 
   $scope.recordInput = function($e) {
     
-  	if($scope.scoreInterval) {
-  		return;
-  	}
+    if($scope.scoreInterval) {
+      return;
+    }
 
-  	//rotate player 1
-	  if($e.which == 112) {
+    //rotate player 1
+    if($e.which == 112) {
       $scope.avatar2++;
     } else if($e.which == 111 && $scope.avatar2 > 0) {
       $scope.avatar2--;
     }
 
     //rotate player 2
-	  if($e.which == 114) {
-	    $scope.avatar1++;
+    if($e.which == 114) {
+      $scope.avatar1++;
     } else if($e.which == 113 && $scope.avatar1 > 0) {
       $scope.avatar1--;
     }
@@ -95,8 +101,8 @@ function ctrl($scope, $timeout, $interval){
     //score player 1
     if($e.which == 98) {
       if(!$scope.scoreInterval) {
-	      $timeout(function(){$scope.scoreInterval = false}, 4000);
-        $timeout(function(){$scope.goal = false}, 2000);
+        $timeout(function(){$scope.scoreInterval = false}, 2000);
+        $timeout(function(){$scope.goal = false}, 1000);
         $scope.player1++;
         $scope.goal = true;
         $scope.scoreInterval = true;
@@ -111,15 +117,15 @@ function ctrl($scope, $timeout, $interval){
 
     //C switches into championship mode
     if($e.which == 99) {
-	 	   $scope.championship = !$scope.championship;
+       $scope.championship = !$scope.championship;
 
     }
     
     //score player 2
     if($e.which == 49) {
       if(!$scope.scoreInterval) {
-        $timeout(function(){$scope.scoreInterval = false}, 3500);
-        $timeout(function(){$scope.goal = false}, 2000);
+        $timeout(function(){$scope.scoreInterval = false}, 2000);
+        $timeout(function(){$scope.goal = false}, 1000);
         $scope.player2++;
         $scope.goal = true;
 
@@ -127,7 +133,7 @@ function ctrl($scope, $timeout, $interval){
 
         if($scope.player2 == 4 && $scope.player1 < 4) {
           $scope.finishthem = true;
-          $timeout(function(){$scope.finishthem = false;}, 4000);
+          $timeout(function(){$scope.finishthem = false;}, 3500);
         }
       }
       //$scope.scoreInterval = true;
@@ -138,26 +144,26 @@ function ctrl($scope, $timeout, $interval){
       $scope.reset();
     }
 
-
-	//shortcut keys for players
-	if($e.which == 98) {
-	 
-  }
+    //shortcut keys for players
+    if($e.which == 98) {
+     
+    }
 
     if($scope.player2 == 5) {
     //WINNER
-    	$scope.message1 = "WINNER!";
-    	if($scope.player2 == 0) {
-    		//SKUNK!
-    		$scope.message2 = "SKUNKED!"
-    	}
+      $scope.message2 = "WINNER!";
+      $scope.$broadcast('timer-stop');
+      if($scope.player1 == 0) {
+        //SKUNK!
+        $scope.message1 = "SKUNKED!"
+      }
       $interval.cancel($scope.timerprom);
 
       if($scope.championship) {
         $scope.player1Rounds++;
 
         if($scope.player1Rounds < 3) {
-          $timeout(function(){$scope.nextRound()}, 4000);
+          $timeout(function(){$scope.nextRound()}, 2500);
         }
         else {
           //championship win
@@ -167,16 +173,17 @@ function ctrl($scope, $timeout, $interval){
     }
     else if($scope.player1 == 5) {
     //WINNER!
-		  $scope.message2 = "WINNER!";
-		  if($scope.player1 == 0) {
-    		//SKUNK!
-    		$scope.message1 = "SKUNKED!";
-    	}
+      $scope.message1 = "WINNER!";
+      $scope.$broadcast('timer-stop');
+      if($scope.player2 == 0) {
+        //SKUNK!
+        $scope.message2 = "SKUNKED!";
+      }
       $interval.cancel($scope.timerprom);
       if($scope.championship) {
         $scope.player2Rounds++;
         if($scope.player2Rounds < 3) {
-          $timeout(function(){$scope.nextRound()}, 4000);
+          $timeout(function(){$scope.nextRound()}, 2500);
         }
         else {
           $scope.championshipWin();
@@ -201,76 +208,91 @@ function ctrl($scope, $timeout, $interval){
     $scope.startTimer();
   }
 
+  $scope.resetTimeout = function () {
+    if ($scope.timeoutId) {
+      clearTimeout($scope.timeoutId);
+    }
+  }
+
   $scope.reset = function() {
-  	// $scope.nextRound();
+    // $scope.nextRound();
     $scope.player1Rounds = 0;
     $scope.player2Rounds = 0;
     $scope.avatar1 = 0;
     $scope.avatar2 = 0;
     $scope.player1 = 0;
     $scope.player2 = 0;
+    $scope.message1 = "";
+    $scope.message2 = "";
+    $scope.resetTimeout();
+    $scope.$broadcast('timer-stop');
+    $scope.$broadcast('timer-start');
+    // $scope.mminutes = 0;
+    // $scope.sseconds = 0;
     // $scope.startTimer();
   }
-}
+})
 
-var Timer;
-var TotalSeconds;
-var stop;
-var restart;
 
-function CreateTimer(TimerID, Time) {
-  Timer = document.getElementById(TimerID);
-  TotalSeconds = Time;
 
-  UpdateTimer()
-  restart = window.setTimeout("Tick()", 1000);
-}
+// var Timer;
+// var TotalSeconds;
+// var stop;
+// var restart;
 
-function Tick() {
-  if (TotalSeconds === 1500) {
-    return;
-  }
+// function CreateTimer(TimerID, Time) {
+//   Timer = document.getElementById(TimerID);
+//   TotalSeconds = Time;
 
-  TotalSeconds += 1;
-  UpdateTimer()
-  stop = window.setTimeout("Tick()", 1000);
-  return;
-}
+//   UpdateTimer()
+//   restart = window.setTimeout("Tick()", 1000);
+// }
 
-function UpdateTimer() {
-  var Seconds = TotalSeconds;
+// function Tick() {
+//   if (TotalSeconds === 1500) {
+//     return;
+//   }
+
+//   TotalSeconds += 1;
+//   UpdateTimer()
+//   stop = window.setTimeout("Tick()", 1000);
+//   return;
+// }
+
+// function UpdateTimer() {
+//   var Seconds = TotalSeconds;
   
-  var Hours = Math.floor(Seconds / 3600);
-  Seconds -= Hours * (3600);
+//   var Hours = Math.floor(Seconds / 3600);
+//   Seconds -= Hours * (3600);
 
-  var Minutes = Math.floor(Seconds / 60);
-  Seconds -= Minutes * (60);
+//   var Minutes = Math.floor(Seconds / 60);
+//   Seconds -= Minutes * (60);
 
-  var TimeStr = LeadingZero(Minutes) + " : " + LeadingZero(Seconds);
+//   var TimeStr = LeadingZero(Minutes) + " : " + LeadingZero(Seconds);
 
-  Timer.innerHTML = TimeStr;
-}
+//   Timer.innerHTML = TimeStr;
+// }
 
-function LeadingZero(Time) {
-  return (Time < 10) ? "0" + Time : + Time;
-}
+// function LeadingZero(Time) {
+//   return (Time < 10) ? "0" + Time : + Time;
+// }
 
-document.onkeypress = function(e) {
-  // If user presses W it resets the score and picture  
-  if(e.keyCode == 119) {
-    clearTimeout(stop);
-    clearTimeout(restart);
-    Timer.innerHTML = "00 : 00";
-    CreateTimer("timer", 01);
-    e.preventDefault();
-  //If user presses s it reloads page
-  } else if(e.keyCode == 115) {
-    document.location.reload(true);
-  } else if(e.keyCode == 102) {
-    clearTimeout(stop);
-    clearTimeout(restart);
-  }
-}
+// document.onkeypress = function(e) {
+//   // If user presses W it resets the score and picture  
+//   if(e.keyCode == 119) {
+//     clearTimeout(stop);
+//     clearTimeout(restart);
+//     Timer.innerHTML = "00 : 00";
+//     CreateTimer("timer", 01);
+//     e.preventDefault();
+//   //If user presses s it reloads page
+//   } else if(e.keyCode == 115) {
+//     document.location.reload(true);
+//   } else if(e.keyCode == 102) {
+//     clearTimeout(stop);
+//     clearTimeout(restart);
+//   }
+// }
 
 // IGNORE THIS FOR NOW
 // window.addEventListener("keydown", keysPressed, false);
